@@ -38,7 +38,6 @@ class Main:
                 subject = msg.subject
                 date = msg.date
                 body = msg.body
-                print("Email Body:", body)  # Print the email body
                 self.nlp_extract(sender, recipients, subject, date, body)
 
     def extract_recipients(self, recipients):
