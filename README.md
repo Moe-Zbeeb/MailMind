@@ -54,7 +54,7 @@ The Email Information Extractor is a tool designed to extract important informat
 
 ## Example
 
-To run the application, follow these steps:
+To run the application, follow the following steps:
 
 1. Export your OpenAI API key:
     ```sh
