@@ -65,4 +65,6 @@ To run the application, follow these steps:
     ```sh
     /bin/python3 /path/to/driver.py
     ```
+![image](https://github.com/zbeeb1/MailMind/assets/134772110/913fbe4e-5d2f-44e0-8086-e987e0da1e4e)
+
 
