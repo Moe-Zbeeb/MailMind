@@ -1,4 +1,4 @@
-# MainMind
+# MailMind
 
 ## Overview
 
