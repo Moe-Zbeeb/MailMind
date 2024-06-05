@@ -1,40 +1,59 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
+from PIL import Image, ImageTk
 from main import Main
 import os
 
 class App:
     def __init__(self, root):
         self.root = root
-        self.root.title("Email Information Extractor")
+        self.root.title("Powered By MailMind")
+        self.root.geometry("800x600")  # Changed to a larger initial size
         self.create_widgets()
 
     def create_widgets(self):
+        # Create a Canvas with a white background
+        self.canvas = tk.Canvas(self.root, width=800, height=600, bg="white")
+        self.canvas.pack(fill="both", expand=True)
+
+        # Load the image using Pillow
+        image_path = "/home/moe/Desktop/asfahani_group_holding_logo.jpeg"  # Replace with your image path
+        self.logo_image = Image.open(image_path)
+        self.logo_image = self.logo_image.resize((200, 200), Image.LANCZOS)  # Resize image if needed
+        self.logo_photo = ImageTk.PhotoImage(self.logo_image)
+
+        # Display the image using place to center it
+        self.logo_label = tk.Label(self.root, image=self.logo_photo, bg="white")
+        self.logo_label.place(relx=0.5, rely=0.15, anchor="center")
+
         # Input Directory
-        self.input_label = tk.Label(self.root, text="Input Directory:")
-        self.input_label.grid(row=0, column=0, padx=10, pady=5)
-        self.input_entry = tk.Entry(self.root, width=50)
-        self.input_entry.grid(row=0, column=1, padx=10, pady=5)
+        self.input_label = tk.Label(self.root, text="Input Directory", bg="white")
+        self.input_entry = tk.Entry(self.root, width=30)
         self.input_button = tk.Button(self.root, text="Browse", command=self.browse_input)
-        self.input_button.grid(row=0, column=2, padx=10, pady=5)
+
+        self.input_label.place(relx=0.33, rely=0.4, anchor="e")
+        self.input_entry.place(relx=0.5, rely=0.4, anchor="c")
+        self.input_button.place(relx=0.68, rely=0.4, anchor="w")
 
         # Output File
-        self.output_label = tk.Label(self.root, text="Output CSV File:")
-        self.output_label.grid(row=1, column=0, padx=10, pady=5)
-        self.output_entry = tk.Entry(self.root, width=50)
-        self.output_entry.grid(row=1, column=1, padx=10, pady=5)
+        self.output_label = tk.Label(self.root, text="Output CSV File", bg="white")
+        self.output_entry = tk.Entry(self.root, width=30)
         self.output_button = tk.Button(self.root, text="Browse", command=self.browse_output)
-        self.output_button.grid(row=1, column=2, padx=10, pady=5)
+
+        self.output_label.place(relx=0.33, rely=0.5, anchor="e")
+        self.output_entry.place(relx=0.5, rely=0.5, anchor="c")
+        self.output_button.place(relx=0.68, rely=0.5, anchor="w")
 
         # Label Entity
-        self.label_label = tk.Label(self.root, text="Label Entity:")
-        self.label_label.grid(row=2, column=0, padx=10, pady=5)
-        self.label_entry = tk.Entry(self.root, width=50)
-        self.label_entry.grid(row=2, column=1, padx=10, pady=5)
+        self.label_label = tk.Label(self.root, text="Label Entity", bg="white")
+        self.label_entry = tk.Entry(self.root, width=30)
+
+        self.label_label.place(relx=0.33, rely=0.6, anchor="e")
+        self.label_entry.place(relx=0.5, rely=0.6, anchor="c")
 
         # Run Button
         self.run_button = tk.Button(self.root, text="Run", command=self.run_extractor)
-        self.run_button.grid(row=3, column=0, columnspan=3, padx=10, pady=20)
+        self.run_button.place(relx=0.5, rely=0.7, anchor="c")
 
     def browse_input(self):
         input_dir = filedialog.askdirectory()
