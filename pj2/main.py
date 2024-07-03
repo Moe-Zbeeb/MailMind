@@ -59,7 +59,7 @@ class Main:
         self.write(data)
 
     def extract_with_chatgpt(self, body):  
-        client = OpenAI(api_key="sk-proj-9I75H8XxKPVJxD42kLlWT3BlbkFJBgZT78wsiQcYfasbRZfq")
+        client = OpenAI(api_key="")
         prompt = f"""
         Extract the job title and company name from the following text:
         
